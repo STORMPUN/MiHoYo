@@ -1,0 +1,110 @@
+html{
+    scroll-behavior: smooth;
+}
+body {
+    background-color: #dedede;
+    padding: 5px;
+    margin: 15px;
+    font-size: 25px;
+    font-family:Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-family:Arial, sans-serif;
+    font-size: 1.95em;
+}
+
+h2{
+    text-align:center;
+  }
+
+li{
+    margin-top: 20px;
+}
+
+img{
+    border: 5px solid blue;
+    border-radius: 35px;
+    width: 100%;
+  }
+
+.label{
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+/* ==========================================================================
+   4. CHẾ ĐỘ XEM DI ĐỘNG (Bổ sung theo đề bài)
+   Sử dụng lưới một cột với khoảng cách 10px giữa các hàng và cột.
+   ========================================================================== */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Lưới một cột */
+  gap: 10px;                  /* Khoảng cách 10px giữa các hàng và cột */
+}
+
+
+/* ==========================================================================
+   5. CHẾ ĐỘ XEM MÁY TÍNH BẢNG (Kích hoạt ở 772px)
+   ========================================================================== */
+@media (min-width: 772px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr); /* a. Sử dụng lưới hai cột */
+  }
+
+  .grid-item img {
+    border-radius: 50%; /* b. Đặt bán kính đường viền trên các hình để tạo hình tròn */
+  }
+
+  .grid-item:last-child {
+    grid-column: span 2; /* c. Đặt con số cuối cùng để chiếm cả hai cột */
+  }
+}
+
+
+/* ==========================================================================
+   6. CHẾ ĐỘ XEM MÀN HÌNH LỚN (Kích hoạt ở 992px)
+   ========================================================================== */
+@media (min-width: 992px) {
+  /* Reset lại thuộc tính chiếm 2 cột của phần tử cuối ở chế độ tablet trước đó */
+  .grid-item:last-child {
+    grid-column: auto; 
+  }
+
+  /* a. Đặt mỗi con số thứ ba để chiếm cả hai cột */
+  .grid-item:nth-child(3n) {
+    grid-column: span 2;
+  }
+
+  /* b. Xóa bán kính đường viền khỏi tất cả các hình (Đảm bảo không dùng max-width) */
+  .grid-item img {
+    border-radius: 0;
+  }
+}
+
+
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important; /* a. Xóa hành vi cuộn mượt (smooth) có sẵn ở trên */
+  }
+}
+
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212; 
+    color: #ffffff;            
+  }
+
+  .grid-item img {
+    background-color: #242424; 
+    border-color: black;       
+  }
+
+  .grid-item figcaption {
+    color: #ffeb3b; 
+  }
+}
